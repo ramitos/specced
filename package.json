@@ -1,0 +1,12 @@
+{
+  "name": "specced",
+  "version": "0.0.1",
+  "description": "simple test library",
+  "main": "specced.js",
+  "repository": "",
+  "author": "Sérgio Ramos <mail@sergioramos.me>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "0.1.x"
+  }
+}
