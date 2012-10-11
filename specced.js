@@ -55,7 +55,7 @@ parse.parent = function (parent) {
   if(!parent.helpers) parent.helpers = {}
   var fns = []
   parse.ba(parent, fns, parent.helpers)
-  fns.pop()
+  if(parent.after) fns.pop()
   return fns
 }
 
