@@ -1,6 +1,6 @@
 {
   "name": "specced",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "simple test library",
   "main": "specced.js",
   "repository": "",
