@@ -29,13 +29,17 @@ var run = function (fns, ms, callback, onError) {
 
 parse.specs = function (specs) {
   if(typeof specs === 'object') return specs
-
+  if(!specs) {
+    specs = {}
+    return
+  }
+  
   var dir = path.resolve(specs)
   specs = {}
 
   fs.readdirSync(dir).forEach(function (spec) {
     if(!spec.match(/\.js?/)) return
-    specs[spec.replace(/\.js?/, '')] = require(path.join(dir, spec))    
+    specs[spec.replace(/\.js?/, '')] = require(path.join(dir, spec))
   })
 
   this.specs = specs
@@ -72,10 +76,10 @@ parse.child_specs = function (specs, stack) {
 }
 
 parse.child = function (child, stack) {
-  if(typeof child === 'function') stack.push(child.bind(null, this.helpers))
   parse.ba(child, stack, this.helpers, function () {
     if(child.specs) parse.child_specs.call(this, child.specs, stack)
   }.bind(this))
+  if(typeof child === 'function') stack.push(child.bind(null, this.helpers))
   return stack
 }
 
